@@ -6,6 +6,15 @@ on:
       - main
 
 jobs:
+  run-sasdhell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo string
+        run: echsdo "hey there muffa effer"
+      - name: multi line script
+        run: |
+          node -v
+          npm -v
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
