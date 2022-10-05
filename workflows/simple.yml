@@ -1,0 +1,14 @@
+name: Shell Commands
+
+on: [push, pull_request]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo string
+        run: echo "hey there muffa effer"
+      - name: multi line script
+        run: |
+          node -v
+          npm -v
