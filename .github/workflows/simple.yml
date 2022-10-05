@@ -19,6 +19,7 @@ jobs:
           npm -v
   run-shell-command:
     runs-on: ubuntu-latest
+    needs: [run-sasdhell-command]
     steps:
       - name: echo string
         run: echo "hey there muffa effer"
