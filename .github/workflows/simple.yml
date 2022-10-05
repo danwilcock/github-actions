@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo string
-        run: echo "hi there muffa effer"
+        run: echsdo "hey there muffa effer"
       - name: multi line script
         run: |
           node -v
