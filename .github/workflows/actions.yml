@@ -1,0 +1,15 @@
+name: Actions
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  run-sasdhell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple JS Action
+        uses: ./shell.yml
