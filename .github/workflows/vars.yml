@@ -21,9 +21,4 @@ jobs:
           gloop: fig2
           bloop: test3
         run: |
-          echo ${bloop}
-          echo ${gloop}
-      - name: bash
-        run: |
-          echo ${bloop}
-          echo ${gloop}
+          echo ${GITHUB_TEST_ENV}
