@@ -19,4 +19,6 @@ jobs:
       - name: Log Greeting Messages
         run: echo "${{ steps.simple_js_action.outputs.time }}"
       - name: Log Greeting Messages
-        run:  pwd | ls
+        run: |  
+          pwd 
+          ls
