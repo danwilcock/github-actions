@@ -15,4 +15,5 @@ jobs:
         uses: actions/checkout@v1
       - name: bash
         run: |
-          ls
+          pwd
+          ls -a
