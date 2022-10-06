@@ -2,10 +2,6 @@ name: Shell Commands
 
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - main
-
 
 jobs:
   run-sasdhell-command:
