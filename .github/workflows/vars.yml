@@ -17,6 +17,13 @@ jobs:
       bloop: test2
     steps:
       - name: bash
+        env: 
+          gloop: fig2
+          bloop: test3
+        run: |
+          echo ${bloop}
+          echo ${gloop}
+      - name: bash
         run: |
           echo ${bloop}
           echo ${gloop}
