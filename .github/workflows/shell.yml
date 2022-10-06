@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: echo string
         shell: pwsh
-        run: echo "hey there muffa effer"
+        run: Write-Output "hey there muffa effer"
       - name: multi line script
         run: |
           node -v
