@@ -11,14 +11,5 @@ jobs:
   run-git-action:
     runs-on: ubuntu-latest
     steps:
-      - name: Simple JS Action
-        id: simple_js_action
-        uses: actions/hello-world-javascript-action@v1
-        with: 
-          who-to-greet: DAN
-      - name: Log Greeting Messages
-        run: echo "${{ steps.simple_js_action.outputs.time }}"
-      - name: Log Greeting Messages
-        run: |  
-          pwd 
-          ls
+      - name: checkout
+        uses: actions/checkout@v1
