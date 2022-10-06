@@ -22,6 +22,7 @@ jobs:
     needs: [run-sasdhell-command]
     steps:
       - name: echo string
+        shell: pwsh
         run: echo "hey there muffa effer"
       - name: multi line script
         run: |
