@@ -18,3 +18,5 @@ jobs:
           who-to-greet: DAN
       - name: Log Greeting Messages
         run: echo "${{ steps.simple_js_action.outputs.time }}"
+      - name: Log Greeting Messages
+        run: echo pwd | ls
