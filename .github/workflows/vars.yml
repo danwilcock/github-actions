@@ -21,4 +21,4 @@ jobs:
           gloop: fig2
           bloop: test3
         run: |
-          echo ${GITHUB_TEST_ENV}
+          echo ${{secrets.GITHUB_TEST_ENV}}
