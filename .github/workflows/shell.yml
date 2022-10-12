@@ -15,7 +15,6 @@ jobs:
           npm -v
   run-shell-command:
     runs-on: windows-latest
-    if: ${{1==1}}
     needs: [run-sasdhell-command]
     steps:
       - name: echo string
