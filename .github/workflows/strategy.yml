@@ -2,12 +2,16 @@ name: Shell Commands
 
 on: 
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   loop:
     strategy:
       matrix:
         test: [1,2,3]
+        
         
         fail-fast: true
     runs-on: ubuntu-latest
