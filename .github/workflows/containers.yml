@@ -32,6 +32,4 @@ jobs:
           cat /etc/os-release
       - name: echo string
         uses: docker://node:13.5.0-alpine3.10
-        with: 
-          args: "ffsd"
   
