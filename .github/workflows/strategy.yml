@@ -14,12 +14,10 @@ jobs:
         
         
       fail-fast: true
+      max-parallel: 2
     runs-on: ubuntu-latest
     steps:
       - name: echo string
-        run: echo "hey there muffa effer"
-      - name: multi line script
-        run: |
-          node -v
-          npm -v
+        run: echo ${{ matrix.test }}
+      
   
