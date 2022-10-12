@@ -30,7 +30,7 @@ jobs:
         run: |
           node -v
           cat /etc/os-release
-      - name: echo string
+      - name: using a container in a step
         uses: docker://node:13.5.0-alpine3.10
         with: 
           entrypoint: '/bin/echo'
