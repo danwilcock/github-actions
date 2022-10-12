@@ -12,7 +12,7 @@ env:
 jobs:
   run-git-action:
     runs-on: ubuntu-latest
-    if: 1==1
+    if: 1==2
     env: 
       gloop: fig
       bloop: test2
