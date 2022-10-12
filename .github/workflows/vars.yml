@@ -2,9 +2,6 @@ name: Vars
 
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 env: 
   bloop: test
