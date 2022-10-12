@@ -17,5 +17,5 @@ jobs:
       - name: Run file
         uses: docker://node:13.5.0-alpine3.10
         with:
-          with: ./files/test.sh
+          entrypoint: ./files/test.sh
           args: "yo B boy"
