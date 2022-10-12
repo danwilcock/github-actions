@@ -6,10 +6,25 @@ on:
     branches:
       - main
 
+
+
+
 jobs:
   test-container:
     runs-on: ubuntu-latest
     container: node:13.5.0-alpine3.10
+    steps:
+      - name: echo string
+        run: |
+          node -v
+          cat /etc/os-release
+  test-container:
+    runs-on: ubuntu-latest
+    services:
+      app:
+        image: node:13.5.0-alpine3.10
+        ports: 
+          - 3001:3000
     steps:
       - name: echo string
         run: |
