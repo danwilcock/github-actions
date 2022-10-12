@@ -12,16 +12,17 @@ env:
 jobs:
   run-git-action:
     runs-on: ubuntu-latest
-    if: ${{1==1}}
+    if: 1==1
     env: 
       gloop: fig
       bloop: test2
     steps:
       - name: bash
-        if: ${{1==2}}
+        if: 1==2
 
         env: 
           gloop: fig2
           bloop: test3
         run: |
+          echo "running if statement"
           echo ${{secrets.TEST_ENV}}
