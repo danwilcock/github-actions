@@ -12,8 +12,9 @@ jobs:
       matrix:
         test: [1,2,3]
         test2: [4,5,6]
-      matrix:
-        test3: [1,2,3]
+        exclude: 
+          - test: 1
+            test2: 5
         
         
       fail-fast: true
