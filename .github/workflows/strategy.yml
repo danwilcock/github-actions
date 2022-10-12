@@ -12,6 +12,9 @@ jobs:
       matrix:
         test: [1,2,3]
         test2: [4,5,6]
+        includes: 
+          - test: 1
+            test2: 7
         exclude: 
           - test: 1
             test2: 4
