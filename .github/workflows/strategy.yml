@@ -1,0 +1,20 @@
+name: Shell Commands
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  loop:
+    strategy:
+      matrix:
+        test: [1,2,3]
+      fail-fast:true
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo string
+        run: echo "hey there muffa effer"
+      - name: multi line script
+        run: |
+          node -v
+          npm -v
+  
