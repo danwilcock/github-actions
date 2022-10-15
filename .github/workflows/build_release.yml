@@ -30,7 +30,7 @@ jobs:
       - name: Input variables
         run: echo "${{ toJSON(github.event.inputs) }}"
       - name: Check approver
-        if: ${{ github.triggering_actor == }}
+        # if: ${{ github.triggering_actor == }}
         run: echo "${{ toJSON(github) }}"
   # Terraform_Build:
   #   environment: test
