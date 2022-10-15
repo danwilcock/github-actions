@@ -29,6 +29,7 @@ jobs:
       - name: Input variables
         run: echo "${{ toJSON(github.event.inputs) }}"
   Terraform_Build:
+    environment: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Branch
