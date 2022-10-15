@@ -28,34 +28,36 @@ jobs:
     steps:  
       - name: Input variables
         run: echo "${{ toJSON(github.event.inputs) }}"
-  Terraform_Build:
-    environment: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v3
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.2.8
-      - name: Test input variables
-        run: echo ${{ github.event.inputs.message }}
-      - name: Format Check
-        id: fmt
-        run: terraform fmt -check
-      - name: Init
-        id: init
-        run: terraform init
-      - name: Validate
-        id: validate
-        run: terraform validate
+      - name: Check approver
+        run: echo "${{ toJSON(github) }}"
+  # Terraform_Build:
+  #   environment: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Branch
+  #       uses: actions/checkout@v3
+  #     - name: Setup Terraform
+  #       uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: 1.2.8
+  #     - name: Test input variables
+  #       run: echo ${{ github.event.inputs.message }}
+  #     - name: Format Check
+  #       id: fmt
+  #       run: terraform fmt -check
+  #     - name: Init
+  #       id: init
+  #       run: terraform init
+  #     - name: Validate
+  #       id: validate
+  #       run: terraform validate
       
-  Terraform_Plan:
-    runs-on: ubuntu-latest
-    needs: [Terraform_Build]
-    steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v3
+  # Terraform_Plan:
+  #   runs-on: ubuntu-latest
+  #   needs: [Terraform_Build]
+  #   steps:
+  #     - name: Checkout Branch
+  #       uses: actions/checkout@v3
       
       
       
