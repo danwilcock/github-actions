@@ -26,10 +26,11 @@ jobs:
         run: terraform init
       - name: Validate
         id: validate
-        run: terraform validate
+        run: terraform valiefdate
       
   Terraform_Plan:
     runs-on: ubuntu-latest
+    needs: [Terraform_Build]
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
