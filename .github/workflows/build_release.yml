@@ -18,9 +18,12 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.2.8
-      - name: Terraform Format
+      - name: Init
         id: init
         run: terraform init
+      - name: Validate
+        id: validate
+        run: terraform validate
       
   Terraform_Plan:
     runs-on: ubuntu-latest
