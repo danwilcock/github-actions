@@ -26,8 +26,8 @@ jobs:
   Configuration:
     runs-on: ubuntu-latest
     steps:  
-      - name: Display Input variables
-        run: echo "${{ toJSON(github) }}"
+      - name: Input variables
+        run: echo "${{ toJSON(github.event.inputs) }}"
   Terraform_Build:
     runs-on: ubuntu-latest
     steps:
