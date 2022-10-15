@@ -14,6 +14,13 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
-      - name: Check input
-        run : ls
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+  Terraform_Plan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          ls
+      
 
