@@ -30,7 +30,7 @@ jobs:
       
   Terraform_Plan:
     runs-on: ubuntu-latest
-    if: ${{ jobs.Terraform_Build.conclusion == "success" }}
+    if: ${{ needs.Terraform_Build.result == "success" }}
     needs: [Terraform_Build]
     steps:
       - name: Checkout Branch
