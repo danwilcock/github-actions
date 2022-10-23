@@ -9,9 +9,9 @@ on:
 
 
 jobs:
-  Configuration:
-    runs-on: ubuntu-latest
-    environment: test
+  # Configuration:
+  #   runs-on: ubuntu-latest
+  #   environment: test
   
   Terraform_Build:
     # environment: test
