@@ -26,8 +26,7 @@ jobs:
         run: |
           foldersToCheck=()
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            if [ $file == *"tf"* ]
-            then
+            if [[ $file == *"tf"* ]]; then
             
               filename="$(basename "${VAR}")"
               directory="$(dirname "${VAR}")"; 
