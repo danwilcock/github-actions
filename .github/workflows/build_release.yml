@@ -37,8 +37,8 @@ jobs:
 
       - uses: Azure/get-keyvault-secrets@v1
         with:
-          keyvault: "gh-actions" # name of key vault in Azure portal
-          secrets: 'gh-actions-storage-account-key'  # comma separated list of secret keys to fetch from key vault 
+          keyvault: "gh-actions" 
+          secrets: 'gh-actions-storage-account-key'
         id: sa_states
              
 
@@ -46,10 +46,6 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.2.8
-      
-      - name: Format Check
-        id: fmt
-        run: terraform fmt -check
       
       - name: Init
         id: init
@@ -96,13 +92,11 @@ jobs:
           creds: '{"clientId":"${{ secrets.AZURE_AD_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_AD_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_AD_TENANT_ID }}"}'
 
         
-      - name: Get storage account access 
-        uses: azure/CLI@v1
+      - uses: Azure/get-keyvault-secrets@v1
         with:
-          inlineScript: |
-            SA_ACCESS_KEY="$(az storage account keys list --account-name ghactionsstates --query [0].value -o tsv)"
-            echo "::add-mask::$SA_ACCESS_KEY"
-            echo SA_ACCESS_KEY=$SA_ACCESS_KEY >> $GITHUB_ENV       
+          keyvault: "gh-actions" 
+          secrets: 'gh-actions-storage-account-key'
+        id: sa_states 
 
 
       - name: Setup Terraform
@@ -114,7 +108,7 @@ jobs:
         id: init
         run: | 
           terraform init \
-            -backend-config="access_key=$SA_ACCESS_KEY" \
+            -backend-config="access_key=${{steps.sa_states.outputs.gh-actions-storage-account-key}}" \
             -backend-config="storage_account_name=ghactionsstates" \
             -backend-config="container_name=tfstates" \
             -backend-config="key=${{matrix.stage}}.terraform.tfstate" 
