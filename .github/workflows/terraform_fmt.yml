@@ -25,10 +25,10 @@ jobs:
       - name: List all changed files
         run: |
           foldersToCheck=()
+          rootDir=$(pwd)
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ $file == *"tf"* ]]; then
               filename="$(basename "${file}")"
-              rootDir=pwd
               
               
               directory="$(dirname "${file}")"; 
