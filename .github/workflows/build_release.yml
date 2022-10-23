@@ -65,7 +65,7 @@ jobs:
           cat $QA_ENV_FILE  >> $GITHUB_ENV
           
       - name: test
-        run: echo $test
+        run: echo $test; echo $test2
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
