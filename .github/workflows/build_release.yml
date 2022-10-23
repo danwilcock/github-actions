@@ -70,8 +70,6 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
-      - name: Pre-Checks
-        uses: "./.github/templates/check_approval"
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
