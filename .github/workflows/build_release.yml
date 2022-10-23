@@ -74,7 +74,10 @@ jobs:
         
       - name: Get storage account access 
         run: | 
-          az storage account keys list --account-name ghactionsstates --query [0].value -o tsv
+          SA_ACCESS_KEY=$(az storage account keys list --account-name ghactionsstates --query [0].value -o tsv)
+          echo "::add-mask::$SSA_ACCESS_KEY"
+          echo $SA_ACCESS_KEY
+          $SA_ACCESS_KEY >> $GITHUB_ENV    
 
 
       - name: Setup Terraform
@@ -86,7 +89,7 @@ jobs:
         id: init
         run: | 
           terraform init \
-            -backend-config="access_key=YuCDT7oPMY0Kzq7zD0rsAxlkewg7tmgWFRAwClKYV8eNTHJ3NIqAiplqlV3+YL3Lrk0cQBzCXFob+AStr5MgXw==" \
+            -backend-config="access_key=$SA_ACCESS_KEY" \
             -backend-config="storage_account_name=ghactionsstates" \
             -backend-config="container_name=tfstates" \
             -backend-config="key=${{matrix.stage}}.terraform.tfstate" 
