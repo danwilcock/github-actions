@@ -1,6 +1,6 @@
 # Terraform Block
 terraform {
-  required_version = "=1.3.2"
+  required_version = "=1.2.8"
 
   required_providers {
     azurerm = {
@@ -14,6 +14,6 @@ terraform {
 
 
 resource "azurerm_resource_group" "name" {
-  name     = "test"
-  location = "uksouth"
+  name="test"
+  location="uksouth"
 }
