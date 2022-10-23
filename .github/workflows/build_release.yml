@@ -54,10 +54,10 @@ jobs:
     runs-on: ubuntu-latest
     # needs: [Terraform_Build]
     steps:
-      - name: Pre-Checks
-        uses: "./.github/templates/check_approval"
       - name: Checkout Branch
         uses: actions/checkout@v3
+      - name: Pre-Checks
+        uses: "./.github/templates/check_approval"
       - name: setup-variables
         run: |
           ls
