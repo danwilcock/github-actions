@@ -14,6 +14,6 @@ terraform {
 
 
 resource "azurerm_resource_group" "name" {
-  name="test"
-  location="uksouth"
+  name     = "test"
+  location = "uksouth"
 }
