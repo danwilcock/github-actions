@@ -15,9 +15,9 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
       
-      - name: Format Check
-        id: fmt
-        run: terraform fmt -check
+      # - name: Format Check
+      #   id: fmt
+      #   run: terraform fmt -check
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v33
