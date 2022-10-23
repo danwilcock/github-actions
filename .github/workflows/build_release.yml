@@ -84,11 +84,6 @@ jobs:
         id: fmt
         run: terraform fmt -check
       
-      
-      - name: Validate
-        id: validate
-        run: terraform validate
-      
       - name: Init
         id: init
         run: | 
@@ -97,6 +92,11 @@ jobs:
             -backend-config="storage_account_name=ghactionsstates" \
             -backend-config="container_name=tfstates" \
             -backend-config="key=${{matrix.stage}}.terraform.tfstate" 
+      
+      - name: Validate
+        id: validate
+        run: terraform validate
+      
       
 
 
