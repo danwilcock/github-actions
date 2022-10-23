@@ -28,7 +28,12 @@ jobs:
         run: terraform fmt -check
       - name: Init
         id: init
-        run: terraform init
+        run: | 
+          terraform init
+            -backend-config="storage_account_name=ghactionsstates" \
+            -backend-config="container_name=tfstates" \
+            -backend-config="key=test.terraform.tfstate" \
+            -backend-config="key=test.terraform.tfstate" 
       - name: Validate
         id: validate
         run: terraform validate
