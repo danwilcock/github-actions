@@ -1,10 +1,10 @@
-name: Terraform fmt
+name: Terraform FMT check PR
 
 on:
   pull_request:
 
 jobs:
-  Terraform-Fmt-Check:
+  Terraform-Fmt-Check: 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Branch
