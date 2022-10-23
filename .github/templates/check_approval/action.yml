@@ -7,6 +7,11 @@ runs:
     - name: Input variables
       shell: bash
       run: echo "${{ toJSON(github.event.inputs) }}"
+    - name: Import Variables
+      shell: bash
+      run: |
+        cat $ENV_FILE
+        cat $ENV_FILE  >> $GITHUB_ENV
     - uses: actions/github-script@v4
       name: Check Approval
       with:
