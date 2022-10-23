@@ -47,6 +47,10 @@ jobs:
              
             // We are only interested in the latest one, which is the first one in the array 
             const latestApproval = approvals.data[0];
+            echo context.actor
+            echo "test"
+            echo latestApproval.user.login
+
             if (latestApproval.user.login == context.actor){
               core.setFailed(`Deployment to the environment is approved by the same person (${context.actor}) who initiated the deployment. This is not allowed.`);            
               return;
