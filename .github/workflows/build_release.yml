@@ -28,7 +28,7 @@ jobs:
     environment: test
     steps:  
       - name: Input variables
-        run: echo "${{ toJSON(github.event) }}"
+        run: echo "${{ toJSON(github) }}"
       - uses: actions/github-script@v4
         with:
           script: |
