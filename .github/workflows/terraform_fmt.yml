@@ -1,4 +1,4 @@
-name: Terraform FMT check PR
+name: Terraform fmt check
 
 on:
   pull_request:
@@ -9,47 +9,11 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
       
-      # - name: Format Check
-      #   id: fmt
-      #   run: terraform fmt -check
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v33
-
-      - name: List all changed files
-        run: |
-          foldersToCheck=()
-          rootDir=$(pwd)
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            if [[ $file == *"tf"* ]]; then
-              filename="$(basename "${file}")"
-              
-              
-              directory="$(dirname "${file}")"; 
-              cd "$rootDir/$directory" 
-              terraform fmt -check              
-              cd ~
-            fi
-          done
-        # lint:
-  #   runs-on: ubuntu-latest
-  #   # require the first job to have ran
-  #   needs: changedfiles
-  #   # only run there are changed files
-  #   if: ${{needs.changedfiles.outputs.ts}}
-  #   steps:
-  #     - name: echo changed files
-  #       run: echo ${{needs.changedfiles.outputs.ts}}
-
-
-
-
-# // get all of the files changes and get differences in 
-
-  
+      - name: Format Check
+        id: fmt
+        run: terraform fmt -check -recursive
+     
