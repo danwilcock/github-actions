@@ -29,10 +29,10 @@ jobs:
       - name: Init
         id: init
         run: | 
-          terraform init 
-            -backend-config="access_key=YuCDT7oPMY0Kzq7zD0rsAxlkewg7tmgWFRAwClKYV8eNTHJ3NIqAiplqlV3+YL3Lrk0cQBzCXFob+AStr5MgXw==" 
-            -backend-config="storage_account_name=ghactionsstates" 
-            -backend-config="container_name=tfstates" 
+          terraform init \
+            -backend-config="access_key=YuCDT7oPMY0Kzq7zD0rsAxlkewg7tmgWFRAwClKYV8eNTHJ3NIqAiplqlV3+YL3Lrk0cQBzCXFob+AStr5MgXw==" \
+            -backend-config="storage_account_name=ghactionsstates" \
+            -backend-config="container_name=tfstates" \
             -backend-config="key=test.terraform.tfstate" 
       - name: Validate
         id: validate
