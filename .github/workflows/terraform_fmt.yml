@@ -24,19 +24,25 @@ jobs:
 
       - name: List all changed files
         run: |
-          echo ${{steps.changed-files.outputs.all_changed_files}}
           foldersToCheck=()
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ $file == *"tf"* ]]; then
               filename="$(basename "${file}")"
               directory="$(dirname "/${file}")"; 
-              echo $filename
-              echo $directory
-            
+              if ![[ $foldersToCheck[*] =~ $directory ]]; then
+                $foldersToCheck+=($directory)
+              fi
             fi
             
 
             
+            
+          done
+          for folder in $foldersToCheck; do
+            echo $folder
+            # cd directory 
+            # terraform fmt -check              
+            # cd ~
           done
         # lint:
   #   runs-on: ubuntu-latest
