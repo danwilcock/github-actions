@@ -29,6 +29,7 @@ jobs:
             if [[ $file == *"tf"* ]]; then
               filename="$(basename "${file}")"
               directory="$(dirname "/${file}")"; 
+              echo $directory
               if ![[ $foldersToCheck[*] =~ $directory ]]; then
                 $foldersToCheck+=($directory)
               fi
