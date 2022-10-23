@@ -28,11 +28,11 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ $file == *"tf"* ]]; then
               filename="$(basename "${file}")"
-              pwd
-              ls
+              rootDir=pwd
               
-              directory="$(dirname "/${file}")"; 
-              cd $directory 
+              
+              directory="$(dirname "${file}")"; 
+              cd "$rootDir/$directory" 
               terraform fmt -check              
               cd ~
             fi
