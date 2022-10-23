@@ -24,7 +24,7 @@ jobs:
 
       - name: List all changed files
         run: |
-          echo ${{steps.changed-files.outputs}}
+          echo ${{steps.changed-files.outputs.all_changed_files}}
           foldersToCheck=()
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ $file == *"tf"* ]]; then
