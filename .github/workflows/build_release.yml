@@ -13,38 +13,39 @@ jobs:
   #   runs-on: ubuntu-latest
   #   environment: test
   
-  Terraform_Build:
-    env:
-      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
-    environment: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v3
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.2.8
-      - name: Format Check
-        id: fmt
-        run: terraform fmt -check
-      - name: Init
-        id: init
-        run: | 
-          terraform init \
-            -backend-config="access_key=YuCDT7oPMY0Kzq7zD0rsAxlkewg7tmgWFRAwClKYV8eNTHJ3NIqAiplqlV3+YL3Lrk0cQBzCXFob+AStr5MgXw==" \
-            -backend-config="storage_account_name=ghactionsstates" \
-            -backend-config="container_name=tfstates" \
-            -backend-config="key=test.terraform.tfstate" 
-      - name: Validate
-        id: validate
-        run: terraform validate
+  # Terraform_Build:
+  #   env:
+  #     ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+  #     ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+  #     ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  #     ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+  #   environment: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Branch
+  #       uses: actions/checkout@v3
+  #     - name: Setup Terraform
+  #       uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: 1.2.8
+  #     - name: Format Check
+  #       id: fmt
+  #       run: terraform fmt -check
+  #     - name: Init
+  #       id: init
+  #       run: | 
+  #         terraform init \
+  #           -backend-config="access_key=YuCDT7oPMY0Kzq7zD0rsAxlkewg7tmgWFRAwClKYV8eNTHJ3NIqAiplqlV3+YL3Lrk0cQBzCXFob+AStr5MgXw==" \
+  #           -backend-config="storage_account_name=ghactionsstates" \
+  #           -backend-config="container_name=tfstates" \
+  #           -backend-config="key=test.terraform.tfstate" 
+  #     - name: Validate
+  #       id: validate
+  #       run: terraform validate
       
   Terraform_Plan:
     env:
+      QA_ENV_FILE: './variables/test.yml'
       ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
@@ -53,8 +54,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [Terraform_Build]
     steps:
+      - name: setup-variables
+        run: |
+          cat $QA_ENV_FILE > .env
       - name: test
-        run: echo $ARM_CLIENT_ID
+        run: echo $test
       - name: Checkout Branch
         uses: actions/checkout@v3
       - name: Setup Terraform
