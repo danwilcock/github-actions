@@ -32,9 +32,6 @@ jobs:
               directory="$(dirname "${VAR}")"; 
               echo $filename
               echo $directory
-              if [[ $file == *"/"* ]];
-              then
-              fi
             
             fi
             
