@@ -29,7 +29,7 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ $file == *"tf"* ]]; then
               filename="$(basename "${file}")"
-              directory="$(dirname "${file}")"; 
+              directory="$(dirname "/${file}")"; 
               echo $filename
               echo $directory
             
