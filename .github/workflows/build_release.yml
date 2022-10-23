@@ -55,7 +55,7 @@ jobs:
     # needs: [Terraform_Build]
     steps:
       - name: Pre-Checks
-        uses: "./.github/temalates/check_approval"
+        uses: "./.github/templates/check_approval"
       - name: Checkout Branch
         uses: actions/checkout@v3
       - name: setup-variables
