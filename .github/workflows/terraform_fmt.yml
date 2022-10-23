@@ -16,5 +16,25 @@ jobs:
       - name: Format Check
         id: fmt
         run: terraform fmt -check
+      - name: Get changed files
+        id: changes
+        # Set outputs using the command.
+        run: |
+          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+          echo "::set-output name=ts::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .ts$ | xargs)"
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   # require the first job to have ran
+  #   needs: changedfiles
+  #   # only run there are changed files
+  #   if: ${{needs.changedfiles.outputs.ts}}
+  #   steps:
+  #     - name: echo changed files
+  #       run: echo ${{needs.changedfiles.outputs.ts}}
+
+
+
+
+# // get all of the files changes and get differences in 
 
   
