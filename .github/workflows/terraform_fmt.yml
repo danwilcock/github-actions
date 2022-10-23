@@ -30,7 +30,6 @@ jobs:
               filename="$(basename "${file}")"
               pwd
               ls
-              echo $directory
               
               directory="$(dirname "/${file}")"; 
               cd $directory 
