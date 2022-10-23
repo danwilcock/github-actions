@@ -28,7 +28,9 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ $file == *"tf"* ]]; then
               filename="$(basename "${file}")"
+              ls
               echo $directory
+              
               directory="$(dirname "/${file}")"; 
               cd $directory 
               terraform fmt -check              
