@@ -31,7 +31,7 @@ jobs:
               echo $directory
               directory="$(dirname "/${file}")"; 
               if [[ ! $foldersToCheck[*] =~ "$directory" ]]; then
-                # $foldersToCheck+=($directory)
+                $foldersToCheck+=("$directory")
               fi
             fi
             
