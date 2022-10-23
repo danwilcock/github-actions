@@ -28,9 +28,8 @@ jobs:
           foldersToCheck=()
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             if [[ $file == *"tf"* ]]; then
-            
-              filename="$(basename "${VAR}")"
-              directory="$(dirname "${VAR}")"; 
+              filename="$(basename "${file}")"
+              directory="$(dirname "${file}")"; 
               echo $filename
               echo $directory
             
