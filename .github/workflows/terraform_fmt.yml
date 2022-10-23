@@ -30,20 +30,10 @@ jobs:
               filename="$(basename "${file}")"
               echo $directory
               directory="$(dirname "/${file}")"; 
-              if [[ ! $foldersToCheck[*] =~ "$directory" ]]; then
-                $foldersToCheck+=("$directory")
-              fi
+              cd $directory 
+              terraform fmt -check              
+              cd ~
             fi
-            
-
-            
-            
-          done
-          for directory in $foldersToCheck; do
-            echo $directory
-            cd $directory 
-            terraform fmt -check              
-            cd ~
           done
         # lint:
   #   runs-on: ubuntu-latest
