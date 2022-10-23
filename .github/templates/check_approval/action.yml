@@ -20,15 +20,13 @@ runs:
           
 
           // Empty check
-          if (approvals.data.length == 0){
-            core.setFailed(`There are no approvals for this deployment. This is not allowed.`);          
-            return; 
-          }
-            
-          // We are only interested in the latest one, which is the first one in the array 
-          const latestApproval = approvals.data[0];
+          if (approvals.data.length > 0){
+              
+            // We are only interested in the latest one, which is the first one in the array 
+            const latestApproval = approvals.data[0];
 
-          if (latestApproval.user.login == context.actor){
-            core.setFailed(`Deployment to the environment is approved by the same person (${context.actor}) who initiated the deployment. This is not allowed.`);            
-            return;
+            if (latestApproval.user.login == context.actor){
+              core.setFailed(`Deployment to the environment is approved by the same person (${context.actor}) who initiated the deployment. This is not allowed.`);            
+              return;
+            }
           }
