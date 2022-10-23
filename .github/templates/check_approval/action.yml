@@ -6,7 +6,7 @@ runs:
   steps:
     - name: Input variables
       shell: bash
-      run: echo "${{ toJSON(github) }}"
+      run: echo "${{ toJSON(github.event.inputs) }}"
     - uses: actions/github-script@v4
       name: Check Approval
       with:
