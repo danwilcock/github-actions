@@ -61,6 +61,7 @@ jobs:
           ls
       - name: setup-variables2
         run: |
+          cat $QA_ENV_FILE
           cat $QA_ENV_FILE  >> $GITHUB_ENV
           
       - name: test
