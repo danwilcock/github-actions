@@ -85,11 +85,11 @@ jobs:
       - name: Plan
         id: plan
         run: | 
-          terraform plan -var-file=envs/${{matrix.stage}}
+          terraform plan -var-file=envs/${{matrix.stage}}.tfvars
       - name: Apply
         id: apply
         run: | 
-          terraform apply -var-file=envs/${{matrix.stage}} -auto-approve 
+          terraform apply -var-file=envs/${{matrix.stage}}.tfvars -auto-approve 
       
       
 
