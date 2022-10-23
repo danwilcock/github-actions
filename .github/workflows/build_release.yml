@@ -65,7 +65,7 @@ jobs:
 
       - name: Pre-Checks
         uses: "./.github/templates/check_approval"
-      
+      - run: echo $ARM_TENANT_ID
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
