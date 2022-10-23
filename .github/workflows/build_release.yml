@@ -74,10 +74,7 @@ jobs:
         
       - name: Get storage account access 
         run: | 
-          $SA_ACCESS_KEY=$(az storage account keys list --account-name ghactionsstates --query [0].value -o tsv)
-          echo "::add-mask::$SA_ACCESS_KEY"
-          echo SA_ACCESS_KEY=$SA_ACCESS_KEY >> $GITHUB_ENV       
-
+          $SA_ACCESS_KEY=$(az storage account keys list --account-name ghactionsstates --query [0].value -o  tsv)
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
