@@ -30,11 +30,11 @@ jobs:
             
               filename="$(basename "${VAR}")"
               directory="$(dirname "${VAR}")"; 
-
-              # if [ $file == *"/"* ]
-              # then
-              #   echo Hey that\'s a large number.
-              # fi
+              echo $filename
+              echo $directory
+              if [[ $file == *"/"* ]];
+              then
+              fi
             
             fi
             
