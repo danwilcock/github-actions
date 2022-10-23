@@ -39,7 +39,7 @@ jobs:
               run_id: context.runId
             })
             
-            console.log(approvals.data);
+            console.log(approvals.data.environments);
 
             // Empty check
             if (approvals.data.length == 0){
