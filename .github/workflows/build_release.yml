@@ -39,17 +39,7 @@ jobs:
   #     - name: Validate
   #       id: validate
   #       run: terraform validate
-      
-  # Pre-Checks:
-  #   env:
-  #     ENV_FILE: './variables/test.yml'
-  #   environment: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout Branch
-  #       uses: actions/checkout@v3
-  #     - name: Pre-Checks
-  #       uses: "./.github/templates/check_approval"
+
       
       
       
@@ -70,6 +60,10 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
+      - name: Pre-Checks
+        uses: "./.github/templates/check_approval"
+      - name: Test Vars
+        run: echo $foo 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
