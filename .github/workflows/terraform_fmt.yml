@@ -39,11 +39,11 @@ jobs:
             
             
           done
-          for folder in $foldersToCheck; do
-            echo $folder
-            # cd directory 
-            # terraform fmt -check              
-            # cd ~
+          for directory in $foldersToCheck; do
+            echo $directory
+            cd $directory 
+            terraform fmt -check              
+            cd ~
           done
         # lint:
   #   runs-on: ubuntu-latest
