@@ -61,7 +61,8 @@ jobs:
           ls
       - name: setup-variables2
         run: |
-          cat $QA_ENV_FILE > .env
+          cat $QA_ENV_FILE  >> $GITHUB_ENV
+          
       - name: test
         run: echo $test
       - name: Setup Terraform
