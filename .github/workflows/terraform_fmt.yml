@@ -24,10 +24,29 @@ jobs:
 
       - name: List all changed files
         run: |
-          echo ${{steps.changed-files.outputs}}
+          foldersToCheck=()
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [ $file == *"tf"* ]
+            then
             
-            echo "$file was changed"
+              filename="$(basename "${VAR}")"
+              directory="$(dirname "${VAR}")"; 
+
+              # if [ $file == *"/"* ]
+              # then
+              #   echo Hey that\'s a large number.
+              # fi
+            
+            fi
+            
+            # if file ending contains contains tf
+            #   if there isnt a / just use root
+            #   if there is, get the folder path
+
+            #   add to the folder directory
+
+
+            
           done
         # lint:
   #   runs-on: ubuntu-latest
