@@ -73,10 +73,12 @@ jobs:
 
         
       - name: Get storage account access 
-        run: | 
-          $SA_ACCESS_KEY="$(az storage account keys list --account-name ghactionsstates --query [0].value -o tsv)"
-          # echo "::add-mask::$SA_ACCESS_KEY"
-          # echo SA_ACCESS_KEY=$SA_ACCESS_KEY >> $GITHUB_ENV       
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            $SA_ACCESS_KEY="$(az storage account keys list --account-name ghactionsstates --query [0].value -o tsv)"
+            echo "::add-mask::$SA_ACCESS_KEY"
+            echo SA_ACCESS_KEY=$SA_ACCESS_KEY >> $GITHUB_ENV       
 
 
       - name: Setup Terraform
