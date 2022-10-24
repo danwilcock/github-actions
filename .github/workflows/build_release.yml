@@ -116,12 +116,13 @@ jobs:
         id: plan
         shell: pwsh
         run: | 
-          $outfile = ""
+          $outFile = ""
           if("${{matrix.stage}}" -eq "test"){
-            $out_file = "-out tf-plan-$(get-date -f yyyy-MM-dd).tfplan";
+            $outFile = "-out tf-plan-$(get-date -f yyyy-MM-dd).tfplan";
           }
+          echo $outFile
           
-          terraform plan -var-file=envs/${{matrix.stage}}.tfvars $out-file
+          terraform plan -var-file=envs/${{matrix.stage}}.tfvars $outFile
       - name: Apply
         id: apply
         run: | 
