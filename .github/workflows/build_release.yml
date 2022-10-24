@@ -121,7 +121,7 @@ jobs:
           fi
           echo $outFile
           
-          terraform plan -var-file=envs/${{matrix.stage}}.tfvars $outFile 
+          terraform plan -var-file=envs/${{matrix.stage}}.tfvars $($outFile) 
       - name: Apply
         id: apply
         run: | 
