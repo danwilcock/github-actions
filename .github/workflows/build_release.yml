@@ -114,9 +114,14 @@ jobs:
             -backend-config="key=${{matrix.stage}}.terraform.tfstate" 
       - name: Plan
         id: plan
-        shell: powershell
         run: | 
-          terraform plan -var-file=envs/${{matrix.stage}}.tfvars 
+          outFile = ""
+          if[["${{matrix.stage}}" -eq "test"]]then;
+            $outFile = "-out tf-plan-$(date +'%d_%m_%Y').tfplan";
+          fi
+          echo $outFile
+          
+          terraform plan -var-file=envs/${{matrix.stage}}.tfvars $outFile 
       - name: Apply
         id: apply
         run: | 
