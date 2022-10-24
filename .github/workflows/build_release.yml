@@ -114,10 +114,8 @@ jobs:
             -backend-config="key=${{matrix.stage}}.terraform.tfstate" 
       - name: Plan
         id: plan
-        shell: pwsh
+        shell: powershell
         run: | 
-          # 
-          
           terraform plan -var-file=envs/${{matrix.stage}}.tfvars 
       - name: Apply
         id: apply
