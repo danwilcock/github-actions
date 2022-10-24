@@ -117,7 +117,7 @@ jobs:
         shell: pwsh
         run: | 
           $outfile = ""
-          if(${{matrix.stage}} == "prd"){
+          if("${{matrix.stage}}" === "prd"){
             $out_file = "-out tf-plan-$(get-date -f yyyy-MM-dd).tfplan";
           }
           
