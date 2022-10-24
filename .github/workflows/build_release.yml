@@ -115,7 +115,7 @@ jobs:
       - name: Plan
         id: plan
         run: | 
-          terraform plan -var-file=envs/${{matrix.stage}}.tfvars
+          terraform plan -var-file=envs/${{matrix.stage}}.tfvars ${{ matrix.stage == "test" ? "-out tf-plan-NOW::$(date +'%Y-%m-%dT%H:%M:%S')" : ""}}
       - name: Apply
         id: apply
         run: | 
