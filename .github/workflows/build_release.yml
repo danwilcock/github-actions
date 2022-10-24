@@ -118,7 +118,7 @@ jobs:
         run: | 
           $out-file = ""
           if(${{matrix.stage}} == "prd"){
-            $out-file = "-out tf-plan-$(get-date -f yyyy-MM-dd).tfplan";
+            $out_file = "-out tf-plan-$(get-date -f yyyy-MM-dd).tfplan";
           }
           
           
