@@ -117,10 +117,9 @@ jobs:
         shell: pwsh
         run: | 
           $outfile = ""
-          if("${{matrix.stage}}" === "prd"){
+          if("${{matrix.stage}}" -eq "test"){
             $out_file = "-out tf-plan-$(get-date -f yyyy-MM-dd).tfplan";
           }
-          
           
           terraform plan -var-file=envs/${{matrix.stage}}.tfvars $out-file
       - name: Apply
